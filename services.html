@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Stock Market Consultancy</title>
+    <title>Earn Together</title>
     <style>
-        body {
+	  body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -40,59 +41,358 @@
             font-size: 1.3em;
             animation: fadeIn 2s 0.5s ease-in-out;
         }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f9fafb;
+            color: #333;
+        }
 
-        /* Navigation Styles */
-        nav {
+        /* Header Section */
+        header {
             display: flex;
-            justify-content: center;
-            background: #003366;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #1f2937, #4b5563);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 span {
+            color: #ffcc00;
+        }
+
+        /* Hamburger Menu Button */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .hamburger.open div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open div:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Navigation Menu */
+        nav {
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            animation: slideInNav 1s;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 14px 25px;
-            font-size: 1.1em;
-            transition: background 0.3s, transform 0.2s;
-            margin: 5px;
-        }
-
-        nav a:hover {
-            background: #0059b3;
-            transform: scale(1.1);
-        }
-
-        /* Main Section Styles */
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
+            left: -100%;
+            width: 250px; /* Increased width */
+            height: 100%;
+            background: linear-gradient(135deg, #4b5563, #1f2937);
+            color: white;
+            display: flex;
+            flex-direction: column;
             padding: 20px;
+            transition: left 0.4s ease-in-out;
+            z-index: 1000;
         }
 
-        .section {
+        nav.open {
+            left: 0;
+        }
+
+        nav .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav .logo h1 {
+            font-size: 1.8em;
+            margin: 0;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.5s ease-in-out forwards;
+        }
+
+        nav ul li:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        nav ul li:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        nav ul li:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        nav ul li:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            nav ul li a {
+                font-size: 1.1em;
+            }
+
+            nav {
+                width: 70%; /* Increase menu width for mobile */
+            }
+        }
+		.hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background: linear-gradient(to right, #eef6ff, #ffffff);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s;
+            margin-top: 30px;
+        }
+
+        .hero img {
+            flex: 1;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .hero div {
+            flex: 2;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #004080;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
             background: #eef6ff;
             padding: 20px;
             border-radius: 10px;
+            text-align: center;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            animation: fadeIn 1.5s ease-in-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1.5s;
         }
 
-        .section h2 {
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
             color: #004080;
-            margin-bottom: 15px;
-            font-size: 2.5em;
         }
 
-        .section p {
+        /* Meter Text Styles */
+        .meter-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 50px;
+        }
+
+        .meter-text {
+            font-size: 2em;
+            font-weight: bold;
+            color: #003366;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInText 1s ease-out;
+        }
+
+        .meter {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            border-radius: 25px;
+            background-color: #f1f1f1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .meter span {
+            display: block;
+            height: 100%;
+            border-radius: 25px;
+            background: linear-gradient(to right, #ffcc00, #0073e6);
+            width: 70%;
+            animation: progressMeter 3s ease-in-out forwards;
+        }
+
+        /* Call To Action Button */
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta button {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta button:hover {
+            background-color: #004080;
+            transform: scale(1.05);
+        }
+
+        /* Fundamentals Section */
+        .fundamentals {
+            background-color: #eef6ff;
+            padding: 40px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fundamentals h2 {
+            color: #004080;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            animation: fadeIn 2s;
+        }
+
+        .fundamentals p {
+            font-size: 1.2em;
             color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .fundamentals ul {
+            list-style-type: square;
+            padding-left: 40px;
+        }
+
+        .fundamentals li {
             font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .fundamentals .section-title {
+            font-size: 1.8em;
+            color: #004080;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .fundamentals .highlight {
+            font-weight: bold;
+            color: #0073e6;
         }
 
         /* Footer Styles */
@@ -124,6 +424,17 @@
             }
         }
 
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         @keyframes slideInNav {
             from {
                 transform: translateY(-100%);
@@ -141,39 +452,94 @@
                 font-size: 2.5em;
             }
 
-            .section {
-                padding: 15px;
+            .hero {
+                flex-direction: column;
+                padding: 20px;
             }
 
-            .section h2 {
+            .hero img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .hero h2 {
                 font-size: 2em;
             }
 
-            .section p {
+            .hero p {
                 font-size: 1em;
             }
 
-            nav a {
-                padding: 12px 18px;
+            .cta button {
+                padding: 12px 25px;
                 font-size: 1em;
             }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .fundamentals h2 {
+                font-size: 2em;
+            }
+
+            .fundamentals p {
+                font-size: 1em;
+            }
+        }
+		 main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: #eef6ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .section h2 {
+            color: #004080;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+
+        .section p {
+            color: #555;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Our Services</h1>
-    <p>Explore the wide range of services we offer to help you succeed in the stock market</p>
+    <h1><span>Earn</span> Together</h1>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 </header>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-</nav>
+<!-- Overlay -->
+<div class="overlay" id="menu-overlay" onclick="toggleMenu()"></div>
 
+<!-- Navigation Menu -->
+<nav id="nav-menu">
+    <div class="logo">
+        <h1>Earn Together</h1>
+    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
 <main>
     <div class="section">
         <h2>Portfolio Management</h2>
@@ -200,6 +566,17 @@
     <p>&copy; 2024 Stock Market Consultancy. All Rights Reserved.</p>
     <p>Follow us: <a href="#">Twitter</a> | <a href="#">LinkedIn</a> | <a href="#">Facebook</a></p>
 </footer>
+<script>
+    function toggleMenu() {
+        const navMenu = document.getElementById('nav-menu');
+        const overlay = document.getElementById('menu-overlay');
+        const hamburger = document.querySelector('.hamburger');
+
+        navMenu.classList.toggle('open');
+        overlay.classList.toggle('active');
+        hamburger.classList.toggle('open');
+    }
+</script>
 
 </body>
 </html>
