@@ -512,18 +512,69 @@
             color: #555;
             font-size: 1.1em;
         }
+    header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #1f2937, #4b5563);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+}
+
     </style>
 </head>
 <body>
 
 <header>
-    <h1><span>Earn</span> Together</h1>
+    <div class="header-content">
+        <img src="abc.png" alt="Logo" class="logo">
+        <h1><span></span>Services</h1>
+    </div>
     <div class="hamburger" onclick="toggleMenu()">
         <div></div>
         <div></div>
         <div></div>
     </div>
 </header>
+
+
 
 <!-- Overlay -->
 <div class="overlay" id="menu-overlay" onclick="toggleMenu()"></div>
