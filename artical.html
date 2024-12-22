@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,34 +65,39 @@
         }
 
         /* Hamburger Menu Button */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 25px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1001;
-        }
+/* Hamburger Menu Button */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* Even spacing for better alignment */
+    align-items: center; /* Center-align sticks */
+    width: 30px; /* Adjusted size for better tap target */
+    height: 22px; /* Slightly larger height */
+    cursor: pointer;
+    z-index: 1001;
+    position: relative; /* Allow precise alignment */
+}
 
-        .hamburger div {
-            height: 3px;
-            background: white;
-            border-radius: 2px;
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        }
+.hamburger div {
+    height: 3px; /* Uniform thickness for each stick */
+    background: white;
+    border-radius: 2px; /* Rounded edges for aesthetics */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    width: 100%; /* Full width of the hamburger container */
+}
 
-        .hamburger.open div:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
+.hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
 
-        .hamburger.open div:nth-child(2) {
-            opacity: 0;
-        }
+.hamburger.open div:nth-child(2) {
+    opacity: 0;
+}
 
-        .hamburger.open div:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
+.hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
 
         /* Navigation Menu */
         nav {
@@ -224,168 +230,10 @@
             margin-top: 30px;
         }
 
-        .hero img {
-            flex: 1;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
+      
 
-        .hero div {
-            flex: 2;
-        }
-
-        .hero h2 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: #004080;
-        }
-
-        .hero p {
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .feature {
-            background: #eef6ff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeIn 1.5s;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature img {
-            max-width: 100px;
-            margin-bottom: 10px;
-        }
-
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #004080;
-        }
-
-        /* Meter Text Styles */
-        .meter-container {
-            text-align: center;
-            margin-top: 30px;
-            padding: 50px;
-        }
-
-        .meter-text {
-            font-size: 2em;
-            font-weight: bold;
-            color: #003366;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            animation: fadeInText 1s ease-out;
-        }
-
-        .meter {
-            position: relative;
-            width: 100%;
-            height: 30px;
-            border-radius: 25px;
-            background-color: #f1f1f1;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .meter span {
-            display: block;
-            height: 100%;
-            border-radius: 25px;
-            background: linear-gradient(to right, #ffcc00, #0073e6);
-            width: 70%;
-            animation: progressMeter 3s ease-in-out forwards;
-        }
-
-        /* Call To Action Button */
-        .cta {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .cta button {
-            background-color: #0073e6;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .cta button:hover {
-            background-color: #004080;
-            transform: scale(1.05);
-        }
-
-        /* Fundamentals Section */
-        .fundamentals {
-            background-color: #eef6ff;
-            padding: 40px;
-            margin-top: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .fundamentals h2 {
-            color: #004080;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: bold;
-            animation: fadeIn 2s;
-        }
-
-        .fundamentals p {
-            font-size: 1.2em;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .fundamentals ul {
-            list-style-type: square;
-            padding-left: 40px;
-        }
-
-        .fundamentals li {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            color: #444;
-        }
-
-        .fundamentals .section-title {
-            font-size: 1.8em;
-            color: #004080;
-            margin-top: 30px;
-            font-weight: bold;
-        }
-
-        .fundamentals .highlight {
-            font-weight: bold;
-            color: #0073e6;
-        }
-
+        
+       
         
 
         /* Animations */
