@@ -22,12 +22,12 @@
     body {
       font-family: var(--font-family);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       background-color: var(--background-color);
       color: var(--text-color);
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Align items to the top to see the logo */
       min-height: 100vh;
     }
 
@@ -36,36 +36,38 @@
       padding: 30px;
       border-radius: var(--border-radius);
       box-shadow: var(--box-shadow);
-      width: 90%;
-      max-width: 500px;
+      width: 95%;
+      max-width: 600px;
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .form-header img {
-      width: 70px;
-      margin-bottom: 10px;
+      width: 400px; /* Logo ka size 2400px */
+      height: 340px; /* Logo ka size 2400px */
+      margin-bottom: 15px;
     }
 
     .form-header h2 {
       margin: 0;
       color: var(--primary-color);
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 500;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: bold;
       color: var(--text-color);
+      font-size: 1.1rem;
     }
 
     input[type="text"],
@@ -74,10 +76,10 @@
     input[type="date"],
     select {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
-      font-size: 1rem;
+      font-size: 1.05rem;
       box-sizing: border-box;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
@@ -98,17 +100,18 @@
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
       background-color: #fff;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .file-upload-label {
       display: block;
-      padding: 12px;
+      padding: 14px;
       text-align: center;
       background-color: #eee;
       color: var(--secondary-color);
       cursor: pointer;
       transition: background-color 0.15s ease-in-out;
+      font-size: 1.05rem;
     }
 
     .file-upload-label:hover {
@@ -128,31 +131,32 @@
     .checkbox-group {
       display: flex;
       align-items: center;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .checkbox-group input[type="checkbox"] {
       width: auto;
-      margin-right: 8px;
+      margin-right: 10px;
     }
 
     .checkbox-group label {
       font-weight: normal;
+      font-size: 1.05rem;
     }
 
     .error-message {
       color: var(--error-color);
-      font-size: 0.9rem;
-      margin-top: 5px;
+      font-size: 0.95rem;
+      margin-top: 6px;
     }
 
     .submit-btn {
       background-color: var(--primary-color);
       color: #fff;
-      padding: 12px 20px;
+      padding: 14px 24px;
       border: none;
       border-radius: var(--border-radius);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       transition: background-color 0.15s ease-in-out;
       width: 100%;
@@ -178,12 +182,18 @@
         padding: 20px;
       }
 
+      .form-header img {
+        width: 2400px; /* Still 2400px on smaller screens */
+        height: 2400px;
+        margin-bottom: 10px;
+      }
+
       .form-header h2 {
-        font-size: 1.75rem;
+        font-size: 2rem;
       }
 
       .submit-btn {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -212,9 +222,9 @@
         <input type="date" id="dob" name="dob" required />
         <p class="error-message" id="ageError">You must be at least 16 years old to submit this form.</p>
       </div>
-	   <label for="dob">For Age Verification (only)</label>
+      <label for="dob">For Age Verification (only)</label>
       <div class="form-group file-upload-wrapper">
-	 
+
         <label for="image" class="file-upload-label">Upload Your Aadhar Card</label>
         <input type="file" id="image" name="image" class="file-upload-input" accept="image/*,video/*" required />
       </div>
