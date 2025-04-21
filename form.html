@@ -27,47 +27,49 @@
       color: var(--text-color);
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Align items to the top to see the logo */
+      align-items: flex-start;
       min-height: 100vh;
+      box-sizing: border-box; /* Ensure padding doesn't affect width */
     }
 
     .form-container {
       background-color: #fff;
-      padding: 30px;
+      padding: 20px; /* Adjusted padding for smaller screens */
       border-radius: var(--border-radius);
       box-shadow: var(--box-shadow);
       width: 95%;
-      max-width: 600px;
+      max-width: 400px; /* Adjusted max-width for better mobile view */
+      box-sizing: border-box; /* Ensure padding doesn't affect width */
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px; /* Adjusted margin */
     }
 
     .form-header img {
-      width: 40px; /* Logo ka size 2400px */
-      height: 34px; /* Logo ka size 2400px */
-      margin-bottom: 15px;
+      width: 80px; /* More reasonable logo size for mobile */
+      height: auto; /* Maintain aspect ratio */
+      margin-bottom: 10px; /* Adjusted margin */
     }
 
     .form-header h2 {
       margin: 0;
       color: var(--primary-color);
-      font-size: 2.2rem;
+      font-size: 1.8rem; /* Adjusted font size for mobile */
       font-weight: 500;
     }
 
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 20px; /* Adjusted margin */
     }
 
     label {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px; /* Adjusted margin */
       font-weight: bold;
       color: var(--text-color);
-      font-size: 1.1rem;
+      font-size: 1rem; /* Adjusted font size for mobile */
     }
 
     input[type="text"],
@@ -76,10 +78,10 @@
     input[type="date"],
     select {
       width: 100%;
-      padding: 14px;
+      padding: 12px; /* Adjusted padding for mobile */
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
-      font-size: 1.05rem;
+      font-size: 1rem; /* Adjusted font size for mobile */
       box-sizing: border-box;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
@@ -100,18 +102,18 @@
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
       background-color: #fff;
-      margin-top: 10px;
+      margin-top: 8px; /* Adjusted margin */
     }
 
     .file-upload-label {
       display: block;
-      padding: 14px;
+      padding: 12px; /* Adjusted padding for mobile */
       text-align: center;
       background-color: #eee;
       color: var(--secondary-color);
       cursor: pointer;
       transition: background-color 0.15s ease-in-out;
-      font-size: 1.05rem;
+      font-size: 1rem; /* Adjusted font size for mobile */
     }
 
     .file-upload-label:hover {
@@ -131,32 +133,32 @@
     .checkbox-group {
       display: flex;
       align-items: center;
-      margin-top: 12px;
+      margin-top: 10px; /* Adjusted margin */
     }
 
     .checkbox-group input[type="checkbox"] {
       width: auto;
-      margin-right: 10px;
+      margin-right: 8px; /* Adjusted margin */
     }
 
     .checkbox-group label {
       font-weight: normal;
-      font-size: 1.05rem;
+      font-size: 1rem; /* Adjusted font size for mobile */
     }
 
     .error-message {
       color: var(--error-color);
-      font-size: 0.95rem;
-      margin-top: 6px;
+      font-size: 0.9rem; /* Adjusted font size for mobile */
+      margin-top: 5px; /* Adjusted margin */
     }
 
     .submit-btn {
       background-color: var(--primary-color);
       color: #fff;
-      padding: 14px 24px;
+      padding: 12px 20px; /* Adjusted padding for mobile */
       border: none;
       border-radius: var(--border-radius);
-      font-size: 1.2rem;
+      font-size: 1.1rem; /* Adjusted font size for mobile */
       cursor: pointer;
       transition: background-color 0.15s ease-in-out;
       width: 100%;
@@ -176,32 +178,13 @@
       text-decoration: underline;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 576px) {
-      .form-container {
-        padding: 20px;
-      }
-
-      .form-header img {
-        width: 2400px; /* Still 2400px on smaller screens */
-        height: 2400px;
-        margin-bottom: 10px;
-      }
-
-      .form-header h2 {
-        font-size: 2rem;
-      }
-
-      .submit-btn {
-        font-size: 1.1rem;
-      }
-    }
+    /* No need for a specific mobile media query here as we've adjusted base styles */
   </style>
 </head>
 <body>
   <div class="form-container">
     <div class="form-header">
-      <img src="mo logo.png" alt="Company Logo" />
+      <img src="abc.png" alt="Company Logo" />
       <h2> Registration</h2>
     </div>
     <form id="contactForm">
