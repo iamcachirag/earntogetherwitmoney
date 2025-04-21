@@ -3,265 +3,371 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registration Form</title>
+  <title>Premium Registration Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Root variables for consistent styling */
     :root {
-      --primary-color: #007bff;
-      --secondary-color: #6c757d;
-      --success-color: #28a745;
-      --error-color: #dc3545;
-      --background-color: #f8f9fa;
-      --text-color: #495057;
-      --border-color: #ced4da;
-      --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-      --border-radius: 0.3rem;
-      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --danger: #e53935;
+      --bg: #f4f6fc;
+      --text: #2e2e2e;
+      --radius: 8px;
     }
 
     body {
-      font-family: var(--font-family);
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
       margin: 0;
       padding: 20px;
-      background-color: var(--background-color);
-      color: var(--text-color);
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
       min-height: 100vh;
-      box-sizing: border-box; /* Ensure padding doesn't affect width */
     }
 
-    .form-container {
-      background-color: #fff;
-      padding: 20px; /* Adjusted padding for smaller screens */
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       width: 95%;
-      max-width: 400px; /* Adjusted max-width for better mobile view */
-      box-sizing: border-box; /* Ensure padding doesn't affect width */
+      max-width: 500px;
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 25px; /* Adjusted margin */
+      margin-bottom: 30px;
     }
 
     .form-header img {
-      width: 80px; /* More reasonable logo size for mobile */
-      height: auto; /* Maintain aspect ratio */
-      margin-bottom: 10px; /* Adjusted margin */
+      width: 80px;
+      margin-bottom: 10px;
     }
 
     .form-header h2 {
       margin: 0;
-      color: var(--primary-color);
-      font-size: 1.8rem; /* Adjusted font size for mobile */
-      font-weight: 500;
+      color: var(--primary);
+      font-weight: 600;
     }
 
     .form-group {
-      margin-bottom: 20px; /* Adjusted margin */
+      margin-bottom: 20px;
     }
 
     label {
       display: block;
-      margin-bottom: 8px; /* Adjusted margin */
-      font-weight: bold;
-      color: var(--text-color);
-      font-size: 1rem; /* Adjusted font size for mobile */
+      margin-bottom: 6px;
+      font-weight: 500;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    input[type="date"],
-    select {
+    input, select {
       width: 100%;
-      padding: 12px; /* Adjusted padding for mobile */
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      font-size: 1rem; /* Adjusted font size for mobile */
-      box-sizing: border-box;
-      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      font-size: 1rem;
     }
 
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="number"]:focus,
-    input[type="date"]:focus,
-    select:focus {
-      border-color: var(--primary-color);
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    input:focus {
+      border-color: var(--primary);
+      outline: none;
     }
 
-    .file-upload-wrapper {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      background-color: #fff;
-      margin-top: 8px; /* Adjusted margin */
+    .page {
+      display: none;
     }
 
-    .file-upload-label {
+    .page.active {
       display: block;
-      padding: 12px; /* Adjusted padding for mobile */
-      text-align: center;
-      background-color: #eee;
-      color: var(--secondary-color);
-      cursor: pointer;
-      transition: background-color 0.15s ease-in-out;
-      font-size: 1rem; /* Adjusted font size for mobile */
     }
 
-    .file-upload-label:hover {
-      background-color: #ddd;
-    }
-
-    .file-upload-input {
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-    }
-
-    .checkbox-group {
+    .btn-group {
       display: flex;
-      align-items: center;
-      margin-top: 10px; /* Adjusted margin */
+      justify-content: space-between;
+      margin-top: 20px;
     }
 
-    .checkbox-group input[type="checkbox"] {
-      width: auto;
-      margin-right: 8px; /* Adjusted margin */
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .checkbox-group label {
-      font-weight: normal;
-      font-size: 1rem; /* Adjusted font size for mobile */
+    .btn-next {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
     }
 
-    .error-message {
-      color: var(--error-color);
-      font-size: 0.9rem; /* Adjusted font size for mobile */
-      margin-top: 5px; /* Adjusted margin */
+    .btn-prev {
+      background: #f0f0f0;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .submit-btn {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 12px 20px; /* Adjusted padding for mobile */
-      border: none;
-      border-radius: var(--border-radius);
-      font-size: 1.1rem; /* Adjusted font size for mobile */
-      cursor: pointer;
-      transition: background-color 0.15s ease-in-out;
       width: 100%;
-      font-weight: bold;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      margin-top: 20px;
     }
 
-    .submit-btn:hover {
-      background-color: #0056b3;
+    .error {
+      color: var(--danger);
+      font-size: 0.85rem;
+      margin-top: 5px;
     }
 
-    .terms-link {
-      color: var(--primary-color);
-      text-decoration: none;
+    .file-upload {
+      border: 1px dashed #aaa;
+      padding: 15px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: center;
+      color: var(--secondary);
+      display: block;
+      margin-top: 10px;
     }
 
-    .terms-link:hover {
-      text-decoration: underline;
+    .file-upload:hover {
+      background-color: #f0f0f0;
     }
 
-    /* No need for a specific mobile media query here as we've adjusted base styles */
+    .checkbox-group {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .btn-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+/* ... aapke existing CSS ... */
+
+/* Style for the custom file upload wrapper */
+#page3 .file-upload-wrapper {
+    position: relative; /* To position the actual input over the label */
+    overflow: hidden; /* Hide the default input */
+    border: 2px dashed var(--secondary);
+    border-radius: var(--radius);
+    margin-top: 5px;
+}
+
+/* Style for the custom file upload label */
+#page3 .file-upload-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    cursor: pointer;
+    color: var(--secondary);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#page3 .file-upload-label:hover {
+    background-color: #f9f9f9;
+}
+
+/* Hide the actual file input */
+#page3 .file-upload-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Style for the checkbox group (no changes needed here) */
+#page3 .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#page3 .checkbox-group input[type="checkbox"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+#page3 .checkbox-group label {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#page3 .checkbox-group a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+#page3 .checkbox-group a:hover {
+    text-decoration: underline;
+}
   </style>
 </head>
 <body>
-  <div class="form-container">
+  <div class="container">
     <div class="form-header">
-      <img src="abc.png" alt="Company Logo" />
-      <h2> Registration</h2>
+      <img src="abc.png" alt="Logo">
+      <h2>Registration Form</h2>
     </div>
-    <form id="contactForm">
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" required />
+    <form id="registrationForm">
+      <!-- Page 1 -->
+      <div class="page active" id="page1">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required />
+        </div>
       </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone No</label>
-        <input type="number" id="phone" name="phone" required />
-      </div>
-      <div class="form-group">
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required />
-        <p class="error-message" id="ageError">You must be at least 16 years old to submit this form.</p>
-      </div>
-      <label for="dob">For Age Verification (only)</label>
-      <div class="form-group file-upload-wrapper">
 
-        <label for="image" class="file-upload-label">Upload Your Aadhar Card</label>
-        <input type="file" id="image" name="image" class="file-upload-input" accept="image/*,video/*" required />
+      <!-- Page 2 -->
+      <div class="page" id="page2">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" required />
+          <div class="error" id="ageError" style="display: none;">You must be at least 16 years old.</div>
+        </div>
       </div>
-      <div class="form-group checkbox-group">
-        <input type="checkbox" id="terms" name="terms" required />
-        <label for="terms">I agree to the <a href="terms.html" class="terms-link" target="_blank">terms and conditions</a></label>
+
+      <!-- Page 3 -->
+      <div class="page" id="page3">
+        <div class="form-group">
+          <label>Upload Aadhar Card</label>
+          <input type="file" id="aadhar" class="file-upload" accept="image/*" required />
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">I agree to the <a href="#" target="_blank">terms & conditions</a></label>
+        </div>
       </div>
-      <button type="submit" class="submit-btn">Register Now</button>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-prev" id="prevBtn" disabled>← Previous</button>
+        <button type="button" class="btn btn-next" id="nextBtn" disabled>
+          <span id="nextIcon">🔒</span> Next →
+        </button>
+      </div>
+
+      <button type="submit" class="btn submit-btn" style="display: none;">Submit</button>
     </form>
   </div>
+
   <script>
-    const form = document.getElementById('contactForm');
+    const form = document.getElementById('registrationForm');
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const submitBtn = document.querySelector('.submit-btn');
     const dobInput = document.getElementById('dob');
     const ageError = document.getElementById('ageError');
+    const nextIcon = document.getElementById('nextIcon');
 
-    form.addEventListener('submit', async function (event) {
-      event.preventDefault();
+    let currentPage = 0;
 
-      const dob = new Date(dobInput.value);
-      const today = new Date();
-      const age = today.getFullYear() - dob.getFullYear();
-      const m = today.getMonth() - dob.getMonth();
-      const d = today.getDate() - dob.getDate();
-      const isUnder16 = age < 16 || (age === 16 && (m < 0 || (m === 0 && d < 0)));
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.toggle('active', i === index);
+      });
+      prevBtn.disabled = index === 0;
+      nextBtn.style.display = index === pages.length - 1 ? 'none' : 'inline-block';
+      submitBtn.style.display = index === pages.length - 1 ? 'inline-block' : 'none';
+      checkFormValidity();
+    }
 
-      if (isUnder16) {
-        ageError.style.display = 'block';
-        return;
-      } else {
-        ageError.style.display = 'none';
+    function validateCurrentPage() {
+      const inputs = pages[currentPage].querySelectorAll('input');
+      for (let input of inputs) {
+        if (!input.checkValidity()) return false;
       }
+      if (dobInput && currentPage === 1) {
+        const dob = new Date(dobInput.value);
+        const today = new Date();
+        const age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
+        const d = today.getDate() - dob.getDate();
+        const underage = age < 16 || (age === 16 && (m < 0 || (m === 0 && d < 0)));
+        ageError.style.display = underage ? 'block' : 'none';
+        return !underage;
+      }
+      return true;
+    }
 
-      const imageFile = document.getElementById('image').files[0];
+    function checkFormValidity() {
+      const inputs = pages[currentPage].querySelectorAll('input');
+      let allValid = true;
+      inputs.forEach(input => {
+        if (!input.value || !input.checkValidity()) {
+          allValid = false;
+        }
+      });
+      nextBtn.disabled = !allValid;
+      nextIcon.innerHTML = allValid ? '🔓' : '🔒';
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (validateCurrentPage()) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentPage--;
+      showPage(currentPage);
+    });
+
+    form.addEventListener('input', () => {
+      checkFormValidity();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alert("Please wait... It may take a moment.");
+      const file = document.getElementById('aadhar').files[0];
       const reader = new FileReader();
 
-      // Show the wait popup
-      alert("Please wait It may  take a movement");
-
       reader.onloadend = async function () {
-        const base64Image = reader.result.split(',')[1];
-        const formData = new URLSearchParams();
-        formData.append("fullName", form.fullName.value);
-        formData.append("email", form.email.value);
-        formData.append("phone", form.phone.value);
-        formData.append("dob", form.dob.value);
-        formData.append("image", base64Image);
+        const base64 = reader.result.split(',')[1];
+        const data = new URLSearchParams();
+        data.append("fullName", document.getElementById("fullName").value);
+        data.append("email", document.getElementById("email").value);
+        data.append("phone", document.getElementById("phone").value);
+        data.append("dob", document.getElementById("dob").value);
+        data.append("image", base64);
 
         try {
-          const response = await fetch("https://script.google.com/macros/s/AKfycbzT3Wcp77camIKKuGYc2mgSgwj_2dDIoIh3iKBEiDjXN1TLl9G0REnjG12u-9O7pDBlGg/exec", {
+          const res = await fetch("https://script.google.com/macros/s/AKfycbzT3Wcp77camIKKuGYc2mgSgwj_2dDIoIh3iKBEiDjXN1TLl9G0REnjG12u-9O7pDBlGg/exec", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: formData.toString()
+            body: data.toString()
           });
-          const result = await response.text();
+          const result = await res.text();
           if (result === "Success") {
             window.location.href = "done.html";
           } else {
@@ -272,12 +378,15 @@
         }
       };
 
-      if (imageFile) {
-        reader.readAsDataURL(imageFile);
+      if (file) {
+        reader.readAsDataURL(file);
       } else {
-        alert("Please upload a photo.");
+        alert("Please upload your Aadhar card.");
       }
     });
+
+    // Show initial page
+    showPage(currentPage);
   </script>
 </body>
 </html>
