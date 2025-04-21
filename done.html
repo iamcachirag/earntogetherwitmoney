@@ -1,70 +1,177 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Submission Successful</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #dff9fb, #c7ecee);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      color: #2d3436;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Submission Successful</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #6dd5ed, #2193b0); /* More vibrant gradient */
+            font-family: 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            color: #fff; /* Light text on the gradient */
+            overflow: hidden;
+            animation: gradientAnimation 10s ease infinite alternate; /* Subtle background animation */
+        }
 
-    .success-container {
-      background: #ffffff;
-      padding: 30px 20px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      max-width: 90%;
-      width: 400px;
-    }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    .logo {
-      width: 100px;
-      height: auto;
-      margin-bottom: 20px;
-    }
+        .success-container {
+            background: rgba(255, 255, 255, 0.95); /* Slightly more opaque white */
+            padding: 56px; /* Increased padding */
+            border-radius: 16px; /* More rounded */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18); /* More pronounced shadow */
+            max-width: 90%;
+            width: 500px; /* Slightly wider */
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: scaleUp 0.5s ease-out forwards; /* Container entrance animation */
+        }
 
-    .message {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
+        @keyframes scaleUp {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
 
-    .redirecting {
-      font-size: 0.95rem;
-      color: #636e72;
-    }
+        .logo-container {
+            width: 112px; /* Slightly larger */
+            height: 112px;
+            border-radius: 50%;
+            background-color: #fff; /* White logo background */
+            color: #2193b0; /* Vibrant text color */
+            font-size: 3.5rem; /* Larger checkmark */
+            line-height: 112px;
+            text-align: center;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: rotateIn 0.6s ease-out 0.4s forwards; /* Logo entrance */
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.8);
+        }
 
-    @media (max-width: 600px) {
-      .logo {
-        width: 80px;
-      }
+        @keyframes rotateIn {
+            from { transform: rotate(-90deg) scale(0.8); opacity: 0; }
+            to { transform: rotate(0deg) scale(1); opacity: 1; }
+        }
 
-      .message {
-        font-size: 1rem;
-      }
-    }
-  </style>
-  <script>
-    setTimeout(() => {
-      window.location.href = "https://iamcachirag.github.io/earntogetherwitmoney/"; // 🔁 Change this to your destination URL
-    }, 5000);
-  </script>
+        .blue-tick-replaced {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px; /* Slightly larger */
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: slideInRight 0.5s ease-out forwards; /* Slide in animation */
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .blue-tick-replaced img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message {
+            font-size: 1.6rem; /* More impactful */
+            margin-bottom: 20px;
+            color: #333; /* Darker text inside the container */
+            font-weight: 600; /* Stronger emphasis */
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 0.5s ease-out 0.6s forwards; /* Message entrance */
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(15px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .redirecting {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 28px;
+            opacity: 0;
+            animation: fadeInDelayed 0.4s ease-out 0.8s forwards; /* Delayed fade in */
+        }
+
+        @keyframes fadeInDelayed {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .success-container {
+                padding: 40px;
+                border-radius: 12px;
+            }
+
+            .logo-container {
+                width: 90px;
+                height: 90px;
+                line-height: 90px;
+                font-size: 3rem;
+                margin-bottom: 28px;
+            }
+
+            .blue-tick-replaced {
+                width: 32px;
+                height: 32px;
+                top: 16px;
+                right: 16px;
+            }
+
+            .message {
+                font-size: 1.4rem;
+                margin-bottom: 16px;
+            }
+
+            .redirecting {
+                font-size: 1rem;
+                margin-top: 20px;
+            }
+        }
+    </style>
+    <script>
+        setTimeout(() => {
+            window.location.href = "https://iamcachirag.github.io/earntogetherwitmoney/"; // 🔁 Change this to your destination URL
+        }, 5000);
+    </script>
 </head>
 <body>
-  <div class="success-container">
-    <img src="https://iamcachirag.github.io/earntogetherwitmoney/abc.png" alt="Company Logo" class="logo" />
-    <div class="message">Your submission has been received.<br>Our representative will contact you very soon.</div>
-    <div class="redirecting">Redirecting you in a few seconds...</div>
-  </div>
+    <div class="success-container">
+        <div class="blue-tick-replaced">
+            <img src="https://iamcachirag.github.io/earntogetherwitmoney/abc.png" alt="Company Logo" />
+        </div>
+        <div class="logo-container">✓</div>
+        <div class="message">Your submission has been received.<br>Our Marketism Team will contact you very soon.</div>
+        <div class="redirecting"></div>
+    </div>
 </body>
 </html>
